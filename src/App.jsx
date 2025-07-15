@@ -1,34 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useRoutes } from 'react-router-dom'
+import AddCreator from './pages/AddCreator'
+import EditCreator from './pages/EditCreator'
+import ShowCreator from './pages/ShowCreators'
+import ViewCreator from './pages/ViewCreator'
 import './App.css'
+import { supabase } from './client'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const navigate = useNavigate();
+
+  useEffect(async () => {
+    
+  })
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className='app-container'>
+        <nav>
+          <Link to="/creators">All Creators</Link>
+          <Link to="/addcreator">Add Creators</Link>
+        </nav>
+
+        <main>
+          <Routes>
+            <Route path="/addcreator" element={<AddCreator />}/>
+            <Route path="/creators/:id/edit" element={<EditCreator />} />
+            <Route path="creators/:id" element={<ViewCreator />} />
+            <Route path="/creators" element={<ShowCreator />} />
+            <Route path = "/" element={<ShowCreator />} />
+            
+          </Routes>
+        </main>
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </Router>
   )
 }
 
