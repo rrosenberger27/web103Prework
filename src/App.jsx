@@ -11,8 +11,7 @@ import { supabase } from './client'
 function App() {
   const [creators, setCreators] = useState();
 
-  useEffect(() => {
-    const fetchCreators = async () => {
+  const fetchCreators = async () => {
       try {
         
         const {data, error} = await supabase.from('creators').select('*');
@@ -27,7 +26,9 @@ function App() {
       } catch (error) {
         console.error('An unexpected error occured: ', error);
     }
-    }
+  }
+
+  useEffect(() => {
     fetchCreators(); 
   }, []);
 
@@ -46,8 +47,8 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<ShowCreators creators={creators} />} /> 
-            <Route path="/add" element={<AddCreator />}/>
-            <Route path="/edit/:id" element={<EditCreator />} />
+            <Route path="/add" element={<AddCreator fetchCreators={fetchCreators} />}/>
+            <Route path="/edit/:id" element={<EditCreator fetchCreators={fetchCreators} />} />
             <Route path="/view/:id" element={<ViewCreator />} />    
           </Routes>
         </main>

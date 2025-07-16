@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../client";
 import { useNavigate, useParams } from "react-router-dom";
 
-const EditCreator = () => {
+const EditCreator = ({fetchCreators}) => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -67,6 +67,7 @@ const EditCreator = () => {
                 alert("Error handling submission. Please try again.");
             } else {
                 // go back to view page
+                await fetchCreators();
                 navigate(`/view/${id}`);
             }
         } catch (error) {
@@ -88,6 +89,7 @@ const EditCreator = () => {
                 console.error('Error deleting creator: ', error);
                 alert("Error deleting creator. Please try again.")
             } else {
+                await fetchCreators();
                 navigate('/');
             }
         } catch (error) {

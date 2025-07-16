@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { supabase } from "../client";
 import { useNavigate } from "react-router-dom";
 
-const AddCreator = () => {
-    // need name, url, imageUrl, description, and submit button
+const AddCreator = ({fetchCreators}) => {
     const [name, setName] = useState("");
     const [url, setUrl] = useState("");
     const [imageURL, setImageURL] = useState("");
@@ -39,6 +38,7 @@ const AddCreator = () => {
                 console.error('Error inserting new creator:', error);
             } else {
                 console.log('Successfully added creator!');
+                await fetchCreators();
                 navigate('/');
             }
         } catch (error) {
