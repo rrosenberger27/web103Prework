@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/Creator.css";
 
 const Creator = ({id, name, url, description, imageURL}) => {
     const navigate = useNavigate();
@@ -7,10 +8,10 @@ const Creator = ({id, name, url, description, imageURL}) => {
     return (
         <div className="creator-container">
             <div className="creator-nav">
-                <button className="view-bttn" onClick={() => navigate(`/view/${id}`)}>
+                <button className="view-bttn" onClick={() => navigate(`/view/${id}`)} data-tooltip="View Creator">
                     &#x1F441;
                 </button>
-                <button className="edit-bttn" onClick={() => navigate(`/edit/${id}`)}>
+                <button className="edit-bttn" onClick={() => navigate(`/edit/${id}`)} data-tooltip="Edit Creator" >
                    &#9998; 
                 </button>
                 <h3>

@@ -36,6 +36,9 @@ function App() {
     <BrowserRouter>
       <div className='app-container'>
         <nav>
+          <h1>
+            CREATORVERSE
+          </h1>
           <button className='nav-button'>
             <Link to="/">All Creators</Link>
           </button>

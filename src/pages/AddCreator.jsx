@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "../client";
 import { useNavigate } from "react-router-dom";
+import "../styles/Form.css";
 
 const AddCreator = ({fetchCreators}) => {
     const [name, setName] = useState("");
@@ -52,26 +53,26 @@ const AddCreator = ({fetchCreators}) => {
                 <button className="back-arrow-add-creator" onClick={() => navigate('/')}>
                     &larr;
                 </button>
-                <h3> 
+                <h3 className="add-header"> 
                     Add Creator
                 </h3>
             </div>
             <form onSubmit={handleSubmit}>
                 <label>
                     Name :
-                    <input type="text" name="name" placeholder="IShowSpeed" onChange={handleNameChange} />
+                    <textarea name="name" placeholder="IShowSpeed" onChange={handleNameChange} />
                 </label>
                 <label>
                     Platform Url :
-                    <input type="text" name="url" placeholder="https..." onChange={handleUrlChange} />
+                    <textarea name="url" placeholder="https..." onChange={handleUrlChange} />
                 </label>
                 <label>
                     Image Url :
-                    <input type="text" name="imageURL" placeholder="https..." onChange={handleImageURLChange} />
+                    <textarea name="imageURL" placeholder="https..." onChange={handleImageURLChange} />
                 </label>
                 <label>
                     Description :
-                    <input type="text" name="description" placeholder="IShowSpeed is a famous streamer with..." onChange={handleDescriptionChange} />
+                    <textarea name="description" placeholder="IShowSpeed is a famous streamer with..." onChange={handleDescriptionChange} />
                 </label>
 
                 <button type="submit" className="add-creator-btn"> Add Creator! </button>

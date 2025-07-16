@@ -1,5 +1,6 @@
 import React from "react";
 import Creator from "../components/creator";
+import "../styles/ShowCreators.css";
 
 const ShowCreators = ({creators}) => {
     

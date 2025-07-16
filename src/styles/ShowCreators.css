@@ -1,0 +1,13 @@
+.all-creators-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.all-creators-container h2 {
+  text-align: center;
+  color: #0b2d45;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  grid-column: 1 / -1;
+}

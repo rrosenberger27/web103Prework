@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { supabase } from "../client";
 import { useNavigate, useParams } from "react-router-dom";
+import "../styles/Form.css";
 
 const EditCreator = ({fetchCreators}) => {
     const { id } = useParams();
@@ -102,35 +103,35 @@ const EditCreator = ({fetchCreators}) => {
     return (
         <div className="edit-creator-container">
             <div className="top-panel">
-                <button className="back-arrow-edit-creator" onClick={() => navigate('/')}>
+                <button className="back-arrow-edit-creator" onClick={() => navigate('/')} data-tooltip="Go to All Creators" >
                     &larr;
                 </button>
-                <button className="view-creator-bttn" onClick={() => navigate(`/view/${id}`)}>
+                <button className="view-creator-bttn" onClick={() => navigate(`/view/${id}`)} data-tooltip="View Creator" >
                     &#x1F441;
                 </button>
-                <button className="delete-bttn" onClick={deleteCreator}>
+                <button className="delete-bttn" onClick={deleteCreator} data-tooltip="Delete Creator" >
                     &#128465;
                 </button>
-                <h3>
+                <h3 className="edit-header">
                     Edit Creator
                 </h3>
             </div>
             <form onSubmit={updateCreator}>
                 <label>
                     Name :
-                    <input type="text" name="name" value={name} onChange={handleNameChange} />
+                    <textarea name="name" value={name} onChange={handleNameChange} />
                 </label>
                 <label>
                     Platform Url :
-                    <input type="text" name="url" value={url} onChange={handleUrlChange} />
+                    <textarea name="url" value={url} onChange={handleUrlChange} />
                 </label>
                 <label>
                     Image Url :
-                    <input type="text" name="imageURL" value={imageURL} onChange={handleImageURLChange} />
+                    <textarea name="imageURL" value={imageURL} onChange={handleImageURLChange} />
                 </label>
                 <label>
                     Description :
-                    <input type="text" name="description" value={description} onChange={handleDescriptionChange} />
+                    <textarea name="description" value={description} onChange={handleDescriptionChange} />
                 </label>
 
                 <button type="submit" className="edit-creator-bttn"> Save Changes! </button>
